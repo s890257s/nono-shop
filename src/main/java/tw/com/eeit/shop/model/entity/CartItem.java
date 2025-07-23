@@ -4,7 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,18 +14,19 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table
-public class Product {
+public class CartItem {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer productId;
+	private Integer cartItemId;
 
-	private String productName;
+	@ManyToOne
+	@JoinColumn(name = "member_id")
+	private Member member;
 
-	private Integer price;
+	@ManyToOne
+	@JoinColumn(name = "product_id")
+	private Product product;
 
-	private String color;
-
-	@Lob
-	private byte[] productPhoto;
+	private Integer qty;
 }
