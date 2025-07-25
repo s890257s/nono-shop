@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS [cart_item], [member], [product];
 
 CREATE TABLE [member] (
     [member_id] INT IDENTITY(1,1) PRIMARY KEY,
+    [is_admin] BIT DEFAULT 0,
     [email] NVARCHAR(255),
     [password] NVARCHAR(255),
     [member_name] NVARCHAR(255),
