@@ -12,5 +12,6 @@ public class LoggedInMember {
 	private Boolean isAdmin;
 	private String email;
 	private byte[] memberPhoto;
+	private String token;
 
 }

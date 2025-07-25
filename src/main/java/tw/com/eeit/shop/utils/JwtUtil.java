@@ -10,7 +10,8 @@ import io.jsonwebtoken.security.Keys;
 
 public class JwtUtil {
 
-	private static final SecretKey SECRET_KEY = Keys.hmacShaKeyFor("ThisIsMySuperSecretAndRidiculouslyLongUltraConfidentialToken".getBytes());
+	private static final SecretKey SECRET_KEY = Keys
+			.hmacShaKeyFor("ThisIsMySuperSecretAndRidiculouslyLongUltraConfidentialToken".getBytes());
 	private static final int EXPIRATION_IN_SECONDS = 60 * 60;
 
 	/**
@@ -26,6 +27,16 @@ public class JwtUtil {
 				.expiration(new Date(System.currentTimeMillis() + EXPIRATION_IN_SECONDS * 1000)) // 設定 token 到期日期
 				.signWith(SECRET_KEY) // 使用密鑰對 token 進行簽名
 				.compact(); // 生成 JWT token
+	}
+
+	/**
+	 * 產生 JWT Token。
+	 *
+	 * @param memberId 使用者的唯一識別碼，將作為 JWT Token 的 subject。
+	 * @return 生成的 JWT Token 字串。
+	 */
+	public static String generateToken(Integer memberId) {
+		return generateToken(memberId.toString());
 	}
 
 	/**

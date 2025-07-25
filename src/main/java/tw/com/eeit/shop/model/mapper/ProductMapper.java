@@ -17,10 +17,8 @@ public class ProductMapper {
 
 		// 將 photo 的 byte[] 轉換成 Base64 格式
 		byte[] photo = entity.getProductPhoto();
-		String mimeType = CommonUtil.getImageMimeType(photo);
-		String base64String = CommonUtil.encodeToBase64String(photo);
-
-		dto.setPhoto("data:%s;base64,%s".formatted(mimeType, base64String));
+		String base64Image = CommonUtil.getBase64Image(photo);
+		dto.setPhoto(base64Image);
 
 		return dto;
 	}

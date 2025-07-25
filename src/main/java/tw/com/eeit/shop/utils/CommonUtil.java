@@ -48,4 +48,16 @@ public class CommonUtil {
 		String base64String = Base64.getEncoder().encodeToString(bytes);
 		return base64String;
 	}
+
+	/**
+	 * 結合以上兩個方法，取得 Base64 格式的圖片字串
+	 */
+	public static String getBase64Image(byte[] bytes) {
+
+		String mimeType = CommonUtil.getImageMimeType(bytes);
+		String base64String = CommonUtil.encodeToBase64String(bytes);
+
+		return "data:%s;base64,%s".formatted(mimeType, base64String);
+
+	}
 }
