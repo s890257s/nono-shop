@@ -56,7 +56,7 @@ public class AuthService {
 	public LoggedInMember login(EmailAndPassword ep) {
 
 		// 找不到 member 表示帳號(email) 打錯
-		Member member = memberRepository.findByMemberMail(ep.getEmail())
+		Member member = memberRepository.findByEmail(ep.getEmail())
 				.orElseThrow(() -> new IncorrectAccountOrPasswordException());
 
 		// 密碼不符合

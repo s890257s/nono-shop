@@ -8,6 +8,6 @@ import tw.com.eeit.shop.model.entity.Member;
 
 public interface MemberRepository extends JpaRepository<Member, Integer> {
 
-	Optional<Member> findByMemberMail(String email);
+	Optional<Member> findByEmail(String email);
 
 }
